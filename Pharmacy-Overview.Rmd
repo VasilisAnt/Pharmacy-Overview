@@ -1,6 +1,8 @@
 ---
 title: "Pharmacy-Overview"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -460,7 +462,7 @@ names(tziros_df_2018) <- l
 
 ##2017
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/201¶7")
+setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2017")
 
 tziros_files_2017 <- list.files(pattern="xlsx")
 
