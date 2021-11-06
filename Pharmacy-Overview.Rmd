@@ -218,7 +218,7 @@ analosima_xwris_fpa_2021 <- tameio_2021%>%
 
 ## Analosima all together
 
-analosima_xwris_fpa <- c(analosima_xwris_fpa_2017,analosima_xwris_fpa_2018,analosima_xwris_fpa_2019,analosima_xwris_fpa_2020,analosima_xwris_fpa_2021)
+analosima_xwris_fpa <- c(analosima_xwris_fpa_2020,analosima_xwris_fpa_2021)
 
 ```
 
@@ -469,7 +469,7 @@ tziros_without_fpa%>%
 ```{r}
 #Τζίρο παραφαρμάκων ανά χρονιά
 tziros_without_fpa%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Parafarmaka))%>%
   ggplot(aes(x=Year,y=total_per_year,fill=Year))+
