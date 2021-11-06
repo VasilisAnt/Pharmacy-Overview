@@ -26,44 +26,48 @@ Various pharmacy-related graphs and tables
 
 Τοποθετούμε αυτό το αρχείο xls στην αντίστοιχο φάκελο της χρονιάς που ανήκει ο μήνας που κάναμε εξαγωγή μέσα στον φάκελο "Tziros".
 
-![](Pharmacy-Overview/2021_tziros.PNG)
+![](2021_tziros.PNG)
 
 10b. Πωλήσεις Φαρμάκων -> 14. Αναλυτικά Ανά Είδος -> Επιλογή ημερομηνίας (ανά μήνα) -> Εμφάνιση Εξαγωγή σε Αρχείο -> ΟΚ -> Export Report -> Format: Microsoft Excel 97-2000 – Data only (XLS), Destination: Disk file -> OK
 
 Τοποθετούμε αυτό το αρχείο xls στην αντίστοιχο φάκελο της χρονιάς που ανήκει ο μήνας που κάναμε εξαγωγή μέσα στον φάκελο "Farmaka" που βρίσκεται μέσα στον φάκελο "Ilyda exports".
 
-
+![](2021_farmaka.PNG)
 
 10c. Πωλήσεις Παραφαρμάκων -> 8. Αναλυτικά Ανά Είδος -> Επιλογή ημερομηνίας (ανά μήνα) -> Εμφάνιση Εξαγωγή σε Αρχείο -> ΟΚ -> Export Report -> Format: Microsoft Excel 97-2000 – Data only (XLS), Destination: Disk file -> OK
 
 Τοποθετούμε αυτό το αρχείο xls στην αντίστοιχο φάκελο της χρονιάς που ανήκει ο μήνας που κάναμε εξαγωγή μέσα στον φάκελο "Parafarmaka" που βρίσκεται μέσα στον φάκελο "Ilyda exports".
 
+![](2021_parafarmaka.PNG)
+
 10d. Στοιχεία Λογιστηρίου -> Κατάσταση Ελέγχου Κινήσεων -> Επιλογή Ημερομηνίας (Από 1/1 του τρέχοντος έτους μέχρι την τελευταία μέρα του μήνα που μόλις τελείωσε) -> Εκτύπωση -> Εξαγωγή σε αρχείο MS Excel ή κειμένου (check if it should xls or xlsx)
 
 Τοποθετούμε αυτό το αρχείο xls μέσα στον φάκελο "Tameio".
 
+![](tameio.PNG)
+
 11. Μετά που θα κατεβάσουμε τα 4 αρχεία θα τα ανοίξουμε έναν-ένα και θα τα κάνουμε αποθήκευση σε μορφή xlsx. Τα 4 αρχεία σε μορφή xlsx θα είναι αυτά που θα χρησιμοποιήσουμε. 
 
-11. Ανοίγουμε το R Studio
+12. Ανοίγουμε το R Studio
 
-12. Κάνουμε copy- paste στο console αυτό και περιμένουμε να γίνει η εγκατάσταση: install.packages(c("tidyverse", "readxl", "lubridate", "janitor", "scales", "openxlsx", "ggrepel", "broom", "infer", "pdftools", "tm", "glue")
+13. Κάνουμε copy- paste στο console αυτό και περιμένουμε να γίνει η εγκατάσταση: install.packages(c("tidyverse", "readxl", "lubridate", "janitor", "scales", "openxlsx", "ggrepel", "broom", "infer", "pdftools", "tm", "glue")
 
-13. Πατάμε File -> New file -> R Markdown
+14. Πατάμε File -> New file -> R Markdown
 
-14. Στον τίτλο βάζουμε My Pharmacy το Author το αφήνουμε κενό και πατάμε Ok
+15. Στον τίτλο βάζουμε My Pharmacy το Author το αφήνουμε κενό και πατάμε Ok
 
-15. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
+16. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
 
-16. Κάνουμε copy-paste όλο τον κώδικα μέσα στο R Markdown
+17. Κάνουμε copy-paste όλο τον κώδικα μέσα στο R Markdown
 
-17. Πατάμε Ctrl + Alt + R και περιμένουμε να τρέξει όλος ο κώδικας
+18. Πατάμε Ctrl + Alt + R και περιμένουμε να τρέξει όλος ο κώδικας
 
-18. Πατάμε File -> New File -> Shiny Web App
+19. Πατάμε File -> New File -> Shiny Web App
 
-19. Επιλέγουμε όνομα εφαρμογής π.χ. «My Pharmacy App”
+20. Επιλέγουμε όνομα εφαρμογής π.χ. «My Pharmacy App”
 
-20. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
+21. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
 
-21. Κάνουμε copy- paste όλο τον κώδικα της εφαρμογής αυτή την φορά
+22. Κάνουμε copy- paste όλο τον κώδικα της εφαρμογής αυτή την φορά
 
-22. Πατάμε Ctrl + Shift + Enter
+23. Πατάμε Ctrl + Shift + Enter
