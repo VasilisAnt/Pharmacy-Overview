@@ -1280,22 +1280,7 @@ all_prescriptions%>%
   geom_line()+
   scale_y_continuous(breaks=seq(0,100,by=10))
 
-#14. Ποιο το συνολικό ποσό (price_of_patients + price_of_eoppy) ανά μήνα σε συγκεκριμένους ιατρούς?
 
-all_prescriptions%>%
-  mutate(Year=year(dates))%>%
-  select(Year,everything())%>%
-  filter(str_detect(Doctor,pattern=c("ΛΙΑΚΟΣ|ΑΓΕΡΙΔΟΥ|ΠΟΛΑΤΙΔΗΣ")))%>%
-  group_by(Year,Month,Doctor)%>%
-  summarize(total=sum(total_price))%>%
-  ungroup()%>%
-  mutate(Date=str_c(Year,Month,"01",sep="-"),
-         Date=ymd(Date))%>%
-  ggplot(aes(x=Date,y=total,color=Doctor,group=Doctor))+
-  geom_point()+
-  geom_line()+
-  scale_y_continuous(breaks=seq(0,3000,500))+
-  geom_vline(xintercept=as.numeric(as.Date("2020-12-01")),linetype=4,color="blue")
 
 
 
