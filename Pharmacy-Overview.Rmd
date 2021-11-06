@@ -46,7 +46,7 @@ cleaning_data <- function(my_data){
 }
 
 ##2017
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Farmaka/2017")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2017")
 
 files_2017 <- list.files(pattern="xls")
 
@@ -87,7 +87,7 @@ names(df_2019) <- z
 farmaka_2019 <- cleaning_data(df_2019)
 
 ##2020
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Farmaka/2020")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2020")
 
 files_2020 <- list.files(pattern="xls")
 
