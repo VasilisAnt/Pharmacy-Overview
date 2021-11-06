@@ -45,46 +45,6 @@ cleaning_data <- function(my_data){
                 mutate(Quantity=as.numeric(Quantity))
 }
 
-##2017
-setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2017")
-
-files_2017 <- list.files(pattern="xls")
-
-df_2017 <- lapply(files_2017,read_excel)
-
-x <- c("2017/04/01","2017/08/01","2017/12/01","2017/02/01","2017/01/01","2017/07/01","2017/06/01","2017/03/01","2017/05/01","2017/11/01","2017/10/01","2017/09/01")
-
-names(df_2017) <- x
-
-farmaka_2017 <- cleaning_data(df_2017)
-
-##2018
-setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2018")
-
-
-files_2018 <- list.files(pattern="xls")
-
-df_2018 <- lapply(files_2018,read_excel)
-
-y <- c("2018/04/01","2018/08/01","2018/12/01","2018/02/01","2018/01/01","2018/07/01","2018/06/01","2018/03/01","2018/05/01","2018/11/01","2018/10/01","2018/09/01")
-
-names(df_2018) <- y
-
-farmaka_2018 <- cleaning_data(df_2018)
-
-##2019
-
-setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2019")
-
-files_2019 <- list.files(pattern="xls")
-
-df_2019 <- lapply(files_2019,read_excel)
-
-z <- c("2019/04/01","2019/08/01","2019/12/01","2019/02/01","2019/01/01","2019/07/01","2019/06/01","2019/03/01","2019/05/01","2019/11/01","2019/10/01","2019/09/01")
-
-names(df_2019) <- z
-
-farmaka_2019 <- cleaning_data(df_2019)
 
 ##2020
 setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2020")
@@ -119,46 +79,6 @@ farmaka_2021 <- cleaning_data(df_2021)
 ##Importing parafarmaka
 ```{r}
 
-#2017
-setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2017")
-
-files_2017_p <- list.files(pattern="xls")
-
-df_2017_p <- lapply(files_2017_p,read_excel)
-
-q <- c("2017/04/01","2017/08/01","2017/12/01","2017/02/01","2017/01/01","2017/07/01","2017/06/01","2017/03/01","2017/05/01","2017/11/01","2017/10/01","2017/09/01")
-
-names(df_2017_p) <- q
-
-parafarmaka_2017 <- cleaning_data(df_2017_p)
-
-
-##2018
-setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2018")
-
-files_2018_p <- list.files(pattern="xls")
-
-df_2018_p <- lapply(files_2018_p,read_excel)
-
-w <- c("2018/04/01","2018/08/01","2018/12/01","2018/02/01","2018/01/01","2018/07/01","2018/06/01","2018/03/01","2018/05/01","2018/11/01","2018/10/01","2018/09/01")
-
-names(df_2018_p) <- w
-
-parafarmaka_2018 <- cleaning_data(df_2018_p)
-
-##2019
-setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2019")
-
-files_2019_p <- list.files(pattern="xls")
-
-df_2019_p <- lapply(files_2019_p,read_excel)
-
-t <- c("2019/04/01","2019/08/01","2019/12/01","2019/02/01","2019/01/01","2019/07/01","2019/06/01","2019/03/01","2019/05/01","2019/11/01","2019/10/01","2019/09/01")
-
-names(df_2019_p) <- t
-
-parafarmaka_2019 <- cleaning_data(df_2019_p)
-
 
 ##2020
 setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2020")
@@ -191,7 +111,7 @@ parafarmaka_2021 <- cleaning_data(df_2021_p)
 
 ##Final cleaning steps before analysis
 ```{r}
-farmaka <- bind_rows(farmaka_2017,farmaka_2018,farmaka_2019,farmaka_2020,farmaka_2021,.id="ID")%>%
+farmaka <- bind_rows(farmaka_2020,farmaka_2021,.id="ID")%>%
   mutate(Year=year(Date),
          Year=as.factor(Year),
          Month=month(Date,label=TRUE))%>%
@@ -220,7 +140,7 @@ farmaka <- bind_rows(farmaka_2017,farmaka_2018,farmaka_2019,farmaka_2020,farmaka
 
 
 
-parafarmaka <- bind_rows(parafarmaka_2017,parafarmaka_2018,parafarmaka_2019,parafarmaka_2020,parafarmaka_2021,.id="ID")%>%
+parafarmaka <- bind_rows(parafarmaka_2020,parafarmaka_2021,.id="ID")%>%
   mutate(Year=year(Date),
          Year=as.factor(Year),
          Month=month(Date,label=TRUE))%>%
@@ -249,80 +169,6 @@ parafarmaka <- bind_rows(parafarmaka_2017,parafarmaka_2018,parafarmaka_2019,para
 ```{r}
 
 setwd("C:/My Pharmacy/Tameio")
-
-# 2017
-
-tameio_2017 <- read_excel("2017 tameio.xlsx")%>%
-  clean_names()%>%
-  select(date="tameio_diastematos",aitiologia=x5,percent_fpa=x6,kathari_axia=x7,fpa=x8,synolo=x9)%>%
-  filter(str_detect(aitiologia,"Ε.Ο.Π.Υ.Υ."))%>%
-  mutate(date=dmy(date),
-         year=year(date),
-         month=month(date,abbr=T,label=T),
-         percent_fpa=as.numeric(percent_fpa),
-         kathari_axia=as.numeric(kathari_axia),
-         fpa=as.numeric(fpa),
-         synolo=as.numeric(synolo))%>%
-  select(date,year,month,everything())%>%
-  distinct()
-
-analosima_xwris_fpa_2017 <- tameio_2017%>%
-  filter(str_detect(aitiologia,"ΥΓΕΙΟ"))%>%
-  group_by(month)%>%
-  summarize(total=sum(kathari_axia))%>%
-  pull(total)
-         
-
-
-
-# 2018
-
-tameio_2018 <- read_excel("2018 tameio.xlsx")%>%
-  clean_names()%>%
-  select(date="tameio_diastematos",aitiologia=x5,percent_fpa=x6,kathari_axia=x7,fpa=x8,synolo=x9)%>%
-  filter(str_detect(aitiologia,"Ε.Ο.Π.Υ.Υ."))%>%
-  mutate(date=dmy(date),
-         year=year(date),
-         month=month(date,abbr=T,label=T),
-         percent_fpa=as.numeric(percent_fpa),
-         kathari_axia=as.numeric(kathari_axia),
-         fpa=as.numeric(fpa),
-         synolo=as.numeric(synolo))%>%
-  select(date,year,month,everything())
-
-
-analosima_xwris_fpa_2018 <- tameio_2018%>%
-  filter(str_detect(aitiologia,"ΥΓΕΙΟ"))%>%
-  group_by(month)%>%
-  summarize(total=sum(kathari_axia))%>%
-  pull(total)
-
-
-
-
-# 2019
-
-tameio_2019 <- read_excel("2019 tameio.xlsx")%>%
-  clean_names()%>%
-  select(date="tameio_diastematos",aitiologia=x5,percent_fpa=x6,kathari_axia=x7,fpa=x8,synolo=x9)%>%
-  filter(str_detect(aitiologia,"Ε.Ο.Π.Υ.Υ."))%>%
-  mutate(date=dmy(date),
-         year=year(date),
-         month=month(date,abbr=T,label=T),
-         percent_fpa=as.numeric(percent_fpa),
-         kathari_axia=as.numeric(kathari_axia),
-         fpa=as.numeric(fpa),
-         synolo=as.numeric(synolo))%>%
-  select(date,year,month,everything())
-
-
-analosima_xwris_fpa_2019 <- tameio_2019%>%
-  filter(str_detect(aitiologia,"ΥΓΕΙΟ"))%>%
-  group_by(month)%>%
-  summarize(total=sum(kathari_axia))%>%
-  pull(total)
-
-
 
 
 # 2020
@@ -406,6 +252,17 @@ mutate(Παραφάρμακα=as.double(Παραφάρμακα),
 
 }
 
+##2020
+
+setwd("C:/My Pharmacy/Tziros/2020")
+
+tziros_files_2020 <- list.files(pattern="xlsx")
+
+tziros_df_2020 <- lapply(tziros_files_2020,read_excel)
+
+i <- c("2020/04/01","2020/08/01","2020/12/01","2020/02/01","2020/01/01","2020/07/01","2020/06/01","2020/03/01","2020/05/01","2020/11/01","2020/10/01","2020/09/01")
+
+names(tziros_df_2020) <- i
 
 ##2021
 
@@ -420,72 +277,16 @@ o <- c("2021/04/01","2021/02/01","2021/01/01","2021/07/01","2021/06/01","2021/03
 names(tziros_df_2021) <- o
 
 
-##2020
-
-setwd("C:/My Pharmacy/Tziros/2020")
-
-tziros_files_2020 <- list.files(pattern="xlsx")
-
-tziros_df_2020 <- lapply(tziros_files_2020,read_excel)
-
-i <- c("2020/04/01","2020/08/01","2020/12/01","2020/02/01","2020/01/01","2020/07/01","2020/06/01","2020/03/01","2020/05/01","2020/11/01","2020/10/01","2020/09/01")
-
-names(tziros_df_2020) <- i
-
-
-##2019
-
-setwd("C:/My Pharmacy/Tziros/2019")
-
-
-tziros_files_2019 <- list.files(pattern="xlsx")
-
-tziros_df_2019 <- lapply(tziros_files_2019,read_excel)
-
-k <- c("2019/04/01","2019/08/01","2019/12/01","2019/02/01","2019/01/01","2019/07/01","2019/06/01","2019/03/01","2019/05/01","2019/11/01","2019/10/01","2019/09/01")
-
-names(tziros_df_2019) <- k
-
-
-##2018
-
-setwd("C:/My Pharmacy/Tziros/2018")
-
-tziros_files_2018 <- list.files(pattern="xlsx")
-
-tziros_df_2018 <- lapply(tziros_files_2018,read_excel)
-
-l <- c("2018/04/01","2018/08/01","2018/12/01","2018/02/01","2018/01/01","2018/07/01","2018/06/01","2018/03/01","2018/05/01","2018/11/01","2018/10/01","2018/09/01")
-
-names(tziros_df_2018) <- l
-
-
-##2017
-
-setwd("C:/My Pharmacy/Tziros/2017")
-
-tziros_files_2017 <- list.files(pattern="xlsx")
-
-tziros_df_2017 <- lapply(tziros_files_2017,read_excel)
-
-j <- c("2017/04/01","2017/08/01","2017/12/01","2017/02/01","2017/01/01","2017/07/01","2017/06/01","2017/03/01","2017/05/01","2017/11/01","2017/10/01/","2017/09/01")
-
-names(tziros_df_2017) <- j
 
 
 
-tziros_2017_without_fpa <- cleaning_data_without_fpa(tziros_df_2017)
-
-tziros_2018_without_fpa <- cleaning_data_without_fpa(tziros_df_2018)
-
-tziros_2019_without_fpa <- cleaning_data_without_fpa(tziros_df_2019)
 
 tziros_2020_without_fpa <- cleaning_data_without_fpa(tziros_df_2020)
 
 tziros_2021_without_fpa <- cleaning_data_without_fpa(tziros_df_2021)
 
 
-tziros_without_fpa<- bind_rows(tziros_2017_without_fpa,tziros_2018_without_fpa,tziros_2019_without_fpa,tziros_2020_without_fpa,tziros_2021_without_fpa)%>%
+tziros_without_fpa<- bind_rows(tziros_2020_without_fpa,tziros_2021_without_fpa)%>%
   rename("Year"=year,"Month"=month,"Farmaka"=Φάρμακα,"Parafarmaka"=Παραφάρμακα)%>%
   mutate(Analosima=analosima_xwris_fpa,
          Total=Farmaka + Parafarmaka + Analosima)%>%
@@ -497,7 +298,7 @@ tziros_without_fpa<- bind_rows(tziros_2017_without_fpa,tziros_2018_without_fpa,t
 
 tziros_without_fpa%>%
   mutate(Year=as.factor(Year))%>%
-  filter(Year %in% c(2017,2018,2019,2020))%>%
+  filter(Year %in% c(2020))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Total))%>%
   mutate(total_per_year=round(total_per_year,digits=0),
@@ -523,7 +324,7 @@ tziros_without_fpa%>%
 ##xwris FPA mono gia tous 7 prwtous mines
 
 tziros_without_fpa%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   filter(Month %in% c("Jan","Feb","Mar","Apr","May","Jun", "Jul"))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Total))%>%
@@ -612,7 +413,7 @@ thirty_most_profitable <- OTC_profit$Drug
 
 #Συνολικό τζίρο ανά χρονιά 
 tziros_without_fpa%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Total))%>%
   mutate(total_per_year=round(total_per_year,digits=0))%>%
@@ -648,7 +449,7 @@ tziros_without_fpa%>%
 
 ## Τζίρο φαρμάκων ανά χρονιά
 tziros_without_fpa%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Farmaka))%>%
   ggplot(aes(x=Year,y=total_per_year,fill=Year))+
@@ -690,7 +491,7 @@ tziros_without_fpa%>%
 ```{r Γραφήματα Αναλώσιμων}
 #Τζίρο αναλώσιμων ανά χρονιά
 tziros_without_fpa%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   group_by(Year)%>%
   summarize(total_per_year=sum(Analosima))%>%
   ggplot(aes(x=Year,y=total_per_year,fill=Year))+
@@ -712,157 +513,13 @@ tziros_without_fpa%>%
 ```{r}
 
 
-#Change of OTC quantitys between 2017 and 2018
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2018),Change!=0)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  arrange(desc(Change))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2017 & 2018",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-#Change of OTC quantitys between 2018 and 2019
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2019),Change!=0)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  arrange(desc(Change))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2018 & 2019",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-#Change of OTC quantitys between 2019 and 2020
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2020),Change!=0)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2.6,hjust=1)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2019 & 2020",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-  
-
-#Change of OTC quantitys between 2017 and 2018 of 30 most profitable products over 1/2017-08/2021
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2018),Change!=0)%>%
-  filter(Drug %in% thirty_most_profitable)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  arrange(desc(Change))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2.6,hjust=1)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2017 & 2018",
-        subtitle="Τα 30 πιο προσοδοφόρα προιόντα κατά την περίοδο 1/2017-08/2021",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-
-
-#Change of OTC quantitys between 2018 and 2019 of 30 most profitable products over 1/2017-02/2021
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2019),Change!=0)%>%
-  filter(Drug %in% thirty_most_profitable)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  arrange(desc(Change))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2.6,hjust=1)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2018 & 2019",
-       subtitle="Τα 30 πιο προσοδοφόρα προιόντα κατά την περίοδο 1/2017-08/2021",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-
-#Change of OTC quantitys between 2019 and 2020 of 30 most profitable products (over 1/2017-02/2021)
-OTC_automated_profit%>%
-  group_by(Drug,Year)%>%
-  summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019,2020))%>%
-  mutate(Change=Total-lag(Total,default=0))%>%
-  filter(Year %in% c(2020),Change!=0)%>%
-  filter(Drug %in% thirty_most_profitable)%>%
-  ungroup()%>%
-  mutate(positive=ifelse(Change>0,TRUE,FALSE),
-         Drug=str_to_title(Drug))%>%
-  arrange(desc(Change))%>%
-  ggplot(aes(x=fct_reorder(Drug,Change),y=Change,fill=positive))+
-  geom_col()+
-  geom_text(aes(label=Change),color="black",size=2.6,hjust=1)+
-  coord_flip()+
-  scale_fill_brewer(palette="Pastel1")+
-  theme(legend.position="none")+
-  labs(title="Μεταβολή σε ποσότητα πωληθέντων OTC μεταξύ 2019 & 2020",
-       subtitle="Τα 30 πιο προσοδοφόρα προιόντα κατά την περίοδο 1/2017-08/2021",
-       x="",
-       y="")+
-  scale_y_continuous(limits=c(-150,150),breaks=c(-150,-100,-50,0,50,100,150))
-
-
-## Ongoing comparisons between 2021 and 2020
-
 ##Change of OTC quantitys between 2020 and 2021 of 30 most profitable products (over 1/2017-07/2021)
 
 OTC_automated_profit%>%
   filter(Month %in% c("Jan","Feb","Mar","Apr","May","Jun", "Jul"))%>%
   group_by(Drug,Year)%>%
   summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-  filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+  filter(Year %in% c(2020,2021))%>%
   mutate(Change=Total-lag(Total,default=0))%>%
   filter(Year %in% c(2021),Change!=0)%>%
   filter(Drug %in% thirty_most_profitable)%>%

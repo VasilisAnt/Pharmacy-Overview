@@ -297,7 +297,7 @@ server <- function(input,output,session){
     output$tziros <- renderPlot ({
         
         tziros_without_fpa%>%
-            filter(Year %in% c(2017,2018,2019,2020))%>%
+            filter(Year %in% c(2020))%>%
             group_by(Year)%>%
             summarize(total_per_year=sum(Total))%>%
             mutate(total_per_year=round(total_per_year,digits=0),
@@ -401,7 +401,7 @@ server <- function(input,output,session){
             summarize(total=sum(Quantity))%>%
             ungroup()%>%
             filter(Drug %in% thirty_most_profitable)%>%
-            filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+            filter(Year %in% c(2020,2021))%>%
             ggplot(aes(x=Year,y=total,group=Drug,color=Year))+
             geom_line()+
             geom_point()+
@@ -423,7 +423,7 @@ server <- function(input,output,session){
             filter(Month %in% c("Jan","Feb","Mar","Apr", "May", "Jun", "Jul"))%>%
             group_by(Drug,Year)%>%
             summarize(Total=sum(Quantity,na.rm=TRUE))%>%
-            filter(Year %in% c(2017,2018,2019,2020,2021))%>%
+            filter(Year %in% c(2020,2021))%>%
             mutate(Change=Total-lag(Total,default=0))%>%
             filter(Year %in% c(2021),Change!=0)%>%
             filter(Drug %in% thirty_most_profitable)%>%
