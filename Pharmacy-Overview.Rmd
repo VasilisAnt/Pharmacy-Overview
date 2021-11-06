@@ -59,7 +59,7 @@ names(df_2017) <- x
 farmaka_2017 <- cleaning_data(df_2017)
 
 ##2018
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Farmaka/2018")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2018")
 
 
 files_2018 <- list.files(pattern="xls")
@@ -74,7 +74,7 @@ farmaka_2018 <- cleaning_data(df_2018)
 
 ##2019
 
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Farmaka/2019")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2019")
 
 files_2019 <- list.files(pattern="xls")
 
@@ -101,7 +101,7 @@ farmaka_2020 <- cleaning_data(df_2020)
 
 ##2021
 
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Farmaka/2021")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2017")
 
 files_2021 <- list.files(pattern="xls")
 
@@ -120,7 +120,7 @@ farmaka_2021 <- cleaning_data(df_2021)
 ```{r}
 
 ##2017
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Parafarmaka/2017")
+setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2017")
 
 files_2017_p <- list.files(pattern="xls")
 
@@ -134,7 +134,7 @@ parafarmaka_2017 <- cleaning_data(df_2017_p)
 
 
 ##2018
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Parafarmaka/2018")
+setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2018")
 
 files_2018_p <- list.files(pattern="xls")
 
@@ -147,7 +147,7 @@ names(df_2018_p) <- w
 parafarmaka_2018 <- cleaning_data(df_2018_p)
 
 ##2019
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Parafarmaka/2019")
+setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2019")
 
 files_2019_p <- list.files(pattern="xls")
 
@@ -161,7 +161,7 @@ parafarmaka_2019 <- cleaning_data(df_2019_p)
 
 
 ##2020
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Parafarmaka/2020")
+setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2020")
 
 files_2020_p <- list.files(pattern="xls")
 
@@ -174,7 +174,7 @@ names(df_2020_p) <- e
 parafarmaka_2020 <- cleaning_data(df_2020_p)
 
 ##2021
-setwd("D:/GitHub/pharmacy project online/Ilyda exports/Parafarmaka/2021")
+setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2021")
 
 files_2021_p <- list.files(pattern="xls")
 
@@ -248,7 +248,7 @@ parafarmaka <- bind_rows(parafarmaka_2017,parafarmaka_2018,parafarmaka_2019,para
 #Import analosima apo tameio xronias
 ```{r}
 
-setwd("D:/GitHub/pharmacy project online/tameio ana xronia")
+setwd("C:/My Pharmacy/Tameio")
 
 # 2017
 
@@ -409,7 +409,7 @@ mutate(Παραφάρμακα=as.double(Παραφάρμακα),
 
 ##2021
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2021")
+setwd("C:/My Pharmacy/Tziros/2021")
 
 tziros_files_2021 <- list.files(pattern="xlsx")
 
@@ -422,7 +422,7 @@ names(tziros_df_2021) <- o
 
 ##2020
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2020")
+setwd("C:/My Pharmacy/Tziros/2020")
 
 tziros_files_2020 <- list.files(pattern="xlsx")
 
@@ -435,7 +435,7 @@ names(tziros_df_2020) <- i
 
 ##2019
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2019")
+setwd("C:/My Pharmacy/Tziros/2019")
 
 
 tziros_files_2019 <- list.files(pattern="xlsx")
@@ -449,7 +449,7 @@ names(tziros_df_2019) <- k
 
 ##2018
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2018")
+setwd("C:/My Pharmacy/Tziros/2018")
 
 tziros_files_2018 <- list.files(pattern="xlsx")
 
@@ -462,7 +462,7 @@ names(tziros_df_2018) <- l
 
 ##2017
 
-setwd("D:/GitHub/pharmacy project online/tziros me ekkremotites/2017")
+setwd("C:/My Pharmacy/Tziros/2017")
 
 tziros_files_2017 <- list.files(pattern="xlsx")
 
@@ -563,8 +563,7 @@ tziros_without_fpa%>%
 ```{r }
 #Importing
 
-setwd("D:/GitHub/pharmacy project online")
-
+setwd("C:/My Pharmacy")
 
 combined_farmaka_parafarmaka <- bind_rows(farmaka,parafarmaka)%>%
   mutate(Name=as.factor(Name))%>%
@@ -942,7 +941,7 @@ OTC_automated_profit%>%
 
 
 
-setwd("D:/GitHub/pharmacy project online/prescriptions")
+setwd("C:/My Pharmacy/Prescriptions")
 
 files <- list.files(pattern="pdf")
 
