@@ -13,7 +13,6 @@ Various pharmacy-related graphs and tables
 
 7. Μέσα στον φάκελο Tziros δημιουργούμε δύο υπό-φακέλους, έναν με το όνομα 2020 και έναν με το όνομα 2021. 
 
-
 ![](folders.PNG)
 
 8. Μπαίνουμε στο e-prescriptions και κατεβάζουμε τις συνταγές κάθε ημέρας μία-μία και τις αποθηκεύουμε σε μορφή pdf. Όλες οι συνταγές θα πρέπει να βρίσκονται στον φάκελο “Prescriptions”.
@@ -48,26 +47,38 @@ Various pharmacy-related graphs and tables
 
 11. Μετά που θα κατεβάσουμε τα 4 αρχεία θα τα ανοίξουμε έναν-ένα και θα τα κάνουμε αποθήκευση σε μορφή xlsx. Τα 4 αρχεία σε μορφή xlsx θα είναι αυτά που θα χρησιμοποιήσουμε. 
 
+12. Κάνουμε download το αρχείο my_OTC.xlsx και το βάζουμε στον φάκελο My Pharmacy.
+
 12. Ανοίγουμε το R Studio
 
-13. Κάνουμε copy- paste στο console αυτό και περιμένουμε να γίνει η εγκατάσταση: install.packages(c("tidyverse", "readxl", "lubridate", "janitor", "scales", "openxlsx", "ggrepel", "broom", "infer", "pdftools", "tm", "glue")
+13. Κάνουμε copy-paste στο Console: install.packages(c("tidyverse", "readxl", "lubridate", "janitor", "scales", "openxlsx", "ggrepel", "broom", "infer", "pdftools", "tm", "glue", "markdown")) και πατάμε Enter. Περιμένουμε να γίνει η εγκατάσταση των πακέτων. Θα χρειαστεί λίγη ώρα ανάλογα με τον υπολογιστή σας (~ 5 λεπτά)
+
+Extra packages for shiny:
+ 
+'bslib', 'cachem', 'commonmark', 'httpuv', 'later', 'promises', 'shiny', 'sourcetools', 'xtable', 'DT', 'shinydashboard', 'shinythemes'
 
 14. Πατάμε File -> New file -> R Markdown
 
 15. Στον τίτλο βάζουμε My Pharmacy το Author το αφήνουμε κενό και πατάμε Ok
 
-16. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
+16. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο (όλες τις γραμμές δηλαδή από 1 μέχρι 29) και το σβήνουμε πατώντας Delete.
 
-17. Κάνουμε copy-paste όλο τον κώδικα μέσα στο R Markdown
+17. Ανοίγουμε το Pharmacy-Overview.Rmd και πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
+
+18. Στο R Studio, και συγκεκριμένα εκεί που σβήσαμε όλο περιοχόμενο στο βήμα 16,  κάνουμε επικόλληση (Ctrl + V).
+
+18. Πατάμε Ctr+ S και κάνουμε αποθήκευση σε όποιο σημείο με όποιο όνονα θέλουμε.
 
 18. Πατάμε Ctrl + Alt + R και περιμένουμε να τρέξει όλος ο κώδικας
 
 19. Πατάμε File -> New File -> Shiny Web App
 
-20. Επιλέγουμε όνομα εφαρμογής π.χ. «My Pharmacy App”
+20. Επιλέγουμε application name π.χ. «My_Pharmacy_App” και πατάμε Create.
 
-21. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο και το σβήνουμε πατώντας Delete
+21. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο (όλες τις γραμμές δηλαδή από 1 μέχρι και 49) και το σβήνουμε πατώντας Delete.
 
-22. Κάνουμε copy- paste όλο τον κώδικα της εφαρμογής αυτή την φορά
+22. Ανοίγουμε τον φάκελο Pharmacy-Overview-App (στο GitHub) και στη συνέχεια το app.R. Πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
 
-23. Πατάμε Ctrl + Shift + Enter
+23. Στο R studio, και συγκεκριμένα εκεί που σβήσαμε όλο το περιοχόμενο στο βήμα 21, κάνουμε επικόλληση (Ctrl + V).
+
+23. Πατάμε Ctrl + Shift + Enter και ανοίγει η εφαρμογή.
