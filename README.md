@@ -26,11 +26,13 @@ Various pharmacy-related graphs and tables
 
 Τοποθετούμε αυτό το αρχείο xls στην αντίστοιχο φάκελο της χρονιάς που ανήκει ο μήνας που κάναμε εξαγωγή μέσα στον φάκελο "Tziros".
 
-![](2021 tziros.PNG)
+![](Pharmacy-Overview/2021%20tziros.PNG)
 
 10b. Πωλήσεις Φαρμάκων -> 14. Αναλυτικά Ανά Είδος -> Επιλογή ημερομηνίας (ανά μήνα) -> Εμφάνιση Εξαγωγή σε Αρχείο -> ΟΚ -> Export Report -> Format: Microsoft Excel 97-2000 – Data only (XLS), Destination: Disk file -> OK
 
 Τοποθετούμε αυτό το αρχείο xls στην αντίστοιχο φάκελο της χρονιάς που ανήκει ο μήνας που κάναμε εξαγωγή μέσα στον φάκελο "Farmaka" που βρίσκεται μέσα στον φάκελο "Ilyda exports".
+
+![](
 
 10c. Πωλήσεις Παραφαρμάκων -> 8. Αναλυτικά Ανά Είδος -> Επιλογή ημερομηνίας (ανά μήνα) -> Εμφάνιση Εξαγωγή σε Αρχείο -> ΟΚ -> Export Report -> Format: Microsoft Excel 97-2000 – Data only (XLS), Destination: Disk file -> OK
 
