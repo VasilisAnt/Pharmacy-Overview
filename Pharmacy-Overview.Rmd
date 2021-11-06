@@ -101,7 +101,7 @@ farmaka_2020 <- cleaning_data(df_2020)
 
 ##2021
 
-setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2017")
+setwd("C:/My Pharmacy/Ilyda exports/Farmaka/2021")
 
 files_2021 <- list.files(pattern="xls")
 
@@ -119,7 +119,7 @@ farmaka_2021 <- cleaning_data(df_2021)
 ##Importing parafarmaka
 ```{r}
 
-##2017
+#2017
 setwd("C:/My Pharmacy/Ilyda exports/Parafarmaka/2017")
 
 files_2017_p <- list.files(pattern="xls")
