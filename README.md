@@ -1,11 +1,9 @@
 # Pharmacy-Overview
 Various pharmacy-related graphs and tables
 
-1. Κάνουμε εγκατάσταση το R και R studio (https://ftp.cc.uoc.gr/mirrors/CRAN/)
+1. Κάνουμε εγκατάσταση το R: Ανοίγουμε το link (https://ftp.cc.uoc.gr/mirrors/CRAN/) και επιλέγουμε “Download R for Windows”, έπειτα “install R for the first time” και μετά "Download R 4.1.2 for Windows". 
 
-2. Ανοίγουμε το παραπάνω link και επιλέγουμε “Download R for Windows” και έπειτα “install R for the first time”
-
-3. Κατεβάζουμε το R Studio (https://www.rstudio.com/products/rstudio/download/)
+3. Κατεβάζουμε το R Studio: Ανοίγουμε το link (https://www.rstudio.com/products/rstudio/download/) και επιλέγουμε download στο free RStudio Desktop και έπειτα "Download RStudio for Windows".
 
 4. Δημιουργούμε μέσα στον σκληρό δίσκο έναν φάκελο με το όνομα “My pharmacy”
 
