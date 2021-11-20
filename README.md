@@ -1,5 +1,5 @@
 # Pharmacy-Overview
-(https://www.google.com "Google's Homepage")
+[Dummy Pharmacy](http://vasilis-antoniadis.shinyapps.io/Dummy_Pharmacy)
 
 1. Κάνουμε εγκατάσταση το R: Ανοίγουμε το link (https://ftp.cc.uoc.gr/mirrors/CRAN/) και επιλέγουμε “Download R for Windows”, έπειτα “install R for the first time” και μετά "Download R 4.1.2 for Windows". 
 
