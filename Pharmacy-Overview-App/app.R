@@ -40,7 +40,7 @@ ui <- dashboardPage(
                             DT::DTOutput("symmetoxes")
                         ),
                         box(
-                            title="Patients with highest compensation from eoppyy",
+                            title="Patients with highest compensation from eopyy",
                             DT::DTOutput("eopyy")
                         )
                     ) #End of fluidRow
@@ -79,19 +79,19 @@ ui <- dashboardPage(
             tabItem(tabName="Doctors_contribution",
                     fluidRow(
                         box(
-                            title="Prescription's cost by doctor",
+                            title="Prescriptions' total cost by doctor",
                             plotOutput("doctors")),
                         box(
-                            title="Number of prescriptions per doctor",
+                            title="Number of prescriptions by doctor",
                             plotOutput("doctors_prescriptions")
                         ),
                         box(
-                            title="Doctor's Contribution per month",
+                            title="Prescriptions' total cost by doctor and month",
                             width=12,
                             plotOutput("doctors_contribution")
                         ),
                         box(
-                            title="Doctor's Average per date selected",
+                            title="Average total cost of prescriptions per month",
                             selectizeInput("name_of_doctor","Select Name of Doctor:",choices=NULL,multiple=TRUE),
                             plotOutput("doctors_average")
                         )
@@ -181,15 +181,17 @@ server <- function(input,output,session){
     output$eopyy <- DT::renderDT({
         
         prescriptions_all()%>%
+            rename(cost_for_eopyy = price_of_eoppy)%>%
             group_by(Patient)%>%
-            summarize(Total_eoppy_in_euros=sum(price_of_eoppy))%>%
-            arrange(desc(Total_eoppy_in_euros))
+            summarize(Total_cost_for_eoppy_in_euros=sum(cost_for_eopyy))%>%
+            arrange(desc(Total_cost_for_eoppy_in_euros))
         
     })
     #Table for prescriptions selected
     
     output$table <- DT::renderDT({
         prescriptions_all()%>%
+            rename(cost_for_patient = price_of_patients, cost_for_eopyy = price_of_eoppy, total_cost = total_price)%>%
             select(-AMKA_patient,-AMKA_doctor,YOB)
         
     })
@@ -222,7 +224,8 @@ server <- function(input,output,session){
             coord_flip()+
             labs(x="",y="")+
             scale_y_continuous(labels = dollar_format(suffix="€",prefix=""),breaks=breaks_extended(8))+
-            theme(panel.grid.minor.x=element_blank())
+            theme(panel.grid.minor.x=element_blank(),
+                  legend.position = "none")
         
         
     })
