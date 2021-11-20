@@ -60,9 +60,9 @@
 
 16. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο (όλες τις γραμμές δηλαδή από 1 μέχρι 29) και το σβήνουμε πατώντας Delete.
 
-17. Ανοίγουμε το Pharmacy-Overview.Rmd και πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
+17. Ανοίγουμε το [Pharmacy-Overview.Rmd](https://github.com/VasilisAnt/Pharmacy-Overview/blob/main/Pharmacy-Overview.Rmd) και πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
 
-18. Στο R Studio, και συγκεκριμένα εκεί που σβήσαμε όλο περιοχόμενο στο βήμα 16,  κάνουμε επικόλληση (Ctrl + V).
+18. Στο R Studio, και συγκεκριμένα εκεί που σβήσαμε όλο περιοχόμενο στο βήμα 17,  κάνουμε επικόλληση (Ctrl + V).
 
 18. Πατάμε Ctr+ S και κάνουμε αποθήκευση σε όποιο σημείο στον υπολογιστή με όποιο όνονα θέλουμε.
 
@@ -70,12 +70,14 @@
 
 19. Πατάμε File -> New File -> Shiny Web App
 
-20. Επιλέγουμε application name π.χ. «My_Pharmacy_App” και πατάμε Create.
+20. Επιλέγουμε application name π.χ. My_Pharmacy_App και πατάμε Create.
 
 21. Πατάμε Ctrl + A επιλέγοντας όλο το περιεχόμενο (όλες τις γραμμές δηλαδή από 1 μέχρι και 49) και το σβήνουμε πατώντας Delete.
 
-22. Ανοίγουμε τον φάκελο Pharmacy-Overview-App (στο GitHub) και στη συνέχεια το app.R. Πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
+22. Ανοίγουμε το app [Pharmacy-Overview-App](https://github.com/VasilisAnt/Pharmacy-Overview/blob/main/Pharmacy-Overview-App/app.R). Πατάμε το Copy raw contents (το εικονίδιο με τα δύο φύλλα δίπλα στο Raw και Blame).
 
-23. Στο R studio, και συγκεκριμένα εκεί που σβήσαμε όλο το περιοχόμενο στο βήμα 21, κάνουμε επικόλληση (Ctrl + V).
+23. Στο R studio, και συγκεκριμένα εκεί που σβήσαμε όλο το περιοχόμενο στο βήμα 24, κάνουμε επικόλληση (Ctrl + V). Πατάμε Ctrl + S για αποθήκευση.
 
-23. Πατάμε Ctrl + Shift + Enter και ανοίγει η εφαρμογή.
+24. Πατάμε File -> Save with Encoding -> UTF-8 -> OK
+
+25. Πατάμε Ctrl + Shift + Enter και ανοίγει η εφαρμογή.
