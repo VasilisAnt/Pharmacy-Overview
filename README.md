@@ -54,6 +54,11 @@
 
 13. Κάνουμε copy-paste στο Console αυτό: install.packages(c("tidyverse", "readxl", "lubridate", "janitor", "scales", "openxlsx", "ggrepel", "broom", "infer", "pdftools", "tm", "glue", "markdown", "bslib", "cachem", "commonmark", "httpuv", "later", "promises", "shiny", "sourcetools", "xtable", "DT", "shinydashboard", "shinythemes")) και πατάμε Enter. Αν μας ρωτήσει να γίνει restart το RStudio πατάμε Ναι. Περιμένουμε να γίνει η εγκατάσταση των πακέτων. Θα χρειαστεί λίγη ώρα ανάλογα με τον υπολογιστή σας (~ 7 λεπτά).
 
+Το Console είναι το 2 στην παρακάτω εικόνα:
+
+![](rstudio.png)
+
+
 14. Πατάμε File -> New file -> R Markdown
 
 15. Στo title βάζουμε My Pharmacy, το Author το αφήνουμε κενό και πατάμε Ok.
